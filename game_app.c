@@ -35,12 +35,21 @@
 
 //TO DO and improvment
 /*
+    DONE:
+        1) Printing all sudoku
+        2) addiing random values
+
     TO DO LIST: 
-        1) everything
+        1) create a file with some finished sudoku and assign them randomly
+        2) adding blank sudoku to add own values
+        3) make a function that allows user to select position 
+        4) check for solved
 
     POTENTIAL IMPROVEMNT
         1) create SUDOKU_ORIGIN generation algorythm
 */
+
+//  REMEMBER TO KEEP GIT HUB REPO UPDATED
 
 
 typedef struct SMALLsqr
@@ -64,37 +73,7 @@ typedef struct SUDOKU
     BIGsqr GRID[3][3];
    
 }SUDOKU;
-/*
-void pos_allocation(SUDOKU* SUDOKU_temp)
-{
-    SUDOKU_temp->BIGsqr11.posX = 1;
-    SUDOKU_temp->BIGsqr11.posY = 1;
 
-    SUDOKU_temp->BIGsqr12.posX = 1;
-    SUDOKU_temp->BIGsqr12.posY = 2;
-
-    SUDOKU_temp->BIGsqr13.posX = 1;
-    SUDOKU_temp->BIGsqr13.posY = 3;
-
-    SUDOKU_temp->BIGsqr21.posX = 2;
-    SUDOKU_temp->BIGsqr21.posY = 1;
-    
-    SUDOKU_temp->BIGsqr22.posX = 2;
-    SUDOKU_temp->BIGsqr22.posY = 2;
-
-    SUDOKU_temp->BIGsqr23.posX = 2;
-    SUDOKU_temp->BIGsqr23.posY = 3;
-
-    SUDOKU_temp->BIGsqr31.posX = 3;
-    SUDOKU_temp->BIGsqr31.posY = 1;
-    
-    SUDOKU_temp->BIGsqr32.posX = 3;
-    SUDOKU_temp->BIGsqr32.posY = 2;
-
-    SUDOKU_temp->BIGsqr33.posX = 3;
-    SUDOKU_temp->BIGsqr33.posY = 3;
-}
-*/
 void print_sudoku(SUDOKU* SUDOKU_temp)
 {
 
