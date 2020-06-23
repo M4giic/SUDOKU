@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "SUDOKU_template.h"
+#include "game_app.h"
 
 //structure visualation
 /*
@@ -52,27 +54,27 @@
 //  REMEMBER TO KEEP GIT HUB REPO UPDATED
 
 
-typedef struct SMALLsqr
-{
-int data[3][3];
-int solved;
+    typedef struct SMALLsqr
+    {
+    int data[3][3];
+    int solved;
 
-}SMALLsqr;
+    }SMALLsqr;
 
-typedef struct BIGsqr
-{
-SMALLsqr content;
+    typedef struct BIGsqr
+    {
+    SMALLsqr content;
 
-int posX;
-int posY;
+    int posX;
+    int posY;
 
-}BIGsqr;
+    }BIGsqr;
 
-typedef struct SUDOKU
-{
-    BIGsqr GRID[3][3];
-   
-}SUDOKU;
+    typedef struct SUDOKU
+    {
+        BIGsqr GRID[3][3];
+    
+    }SUDOKU;
 
 void print_sudoku(SUDOKU* SUDOKU_temp)
 {
@@ -103,6 +105,7 @@ void print_sudoku(SUDOKU* SUDOKU_temp)
     printf(" \n -------------------- \n This is Your sudoku \n\n");
     
 }
+
 void assignvalue_sudoku(SUDOKU* SUDOKU_temp)
 {
 
