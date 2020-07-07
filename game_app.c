@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "SUDOKU_template.h"
+//#include "SUDOKU_template.h"
 #include "game_app.h"
 
 //structure visualation
@@ -46,35 +46,15 @@
         2) adding blank sudoku to add own values
         3) make a function that allows user to select position 
         4) check for solved
+        5) change SMALLsqr to use pointer instead of value to have easier value assigment
 
     POTENTIAL IMPROVEMNT
         1) create SUDOKU_ORIGIN generation algorythm
 */
-
 //  REMEMBER TO KEEP GIT HUB REPO UPDATED
 
 
-    typedef struct SMALLsqr
-    {
-    int data[3][3];
-    int solved;
 
-    }SMALLsqr;
-
-    typedef struct BIGsqr
-    {
-    SMALLsqr content;
-
-    int posX;
-    int posY;
-
-    }BIGsqr;
-
-    typedef struct SUDOKU
-    {
-        BIGsqr GRID[3][3];
-    
-    }SUDOKU;
 
 void print_sudoku(SUDOKU* SUDOKU_temp)
 {
@@ -90,7 +70,8 @@ void print_sudoku(SUDOKU* SUDOKU_temp)
             {
                 for (int index_column=0; index_column < 3; index_column++)
                 {
-                    printf(" %d",SUDOKU_temp->GRID[index_sqrY][index_sqrX].content.data[index_row][index_column]);
+                    //potential segmentaion dump here
+                    printf(" %d",*(SUDOKU_temp->GRID[index_sqrY][index_sqrX].content->data+index_column+index_row));
                 }
                 printf("|");
                 
@@ -109,6 +90,8 @@ void print_sudoku(SUDOKU* SUDOKU_temp)
 void assignvalue_sudoku(SUDOKU* SUDOKU_temp)
 {
 
+int value;
+
     for (int index_sqrY=0; index_sqrY < 3; index_sqrY++)
     {
         for (int index_row = 0; index_row < 3; index_row++)
@@ -119,7 +102,10 @@ void assignvalue_sudoku(SUDOKU* SUDOKU_temp)
                 {
                     //this can generate values to be asigned to slots
 
-                    SUDOKU_temp->GRID[index_sqrY][index_sqrX].content.data[index_row][index_column]=1+index_column+index_sqrX+index_row+index_sqrY;
+                    value = 1+index_column+index_sqrX+index_row+index_sqrY;
+                    //casting and then dereferencing pointer as there is no other way to assign value (?)
+
+                    *((int *) SUDOKU_temp->GRID[index_sqrY][index_sqrX].content->data+index_column+index_row) = value;
                     //printf("current values: \n\n index_column = %d \n index_row = %d \n index_sqrX = %d \n index_sqrY = %d \n",index_column,index_row,index_sqrX,index_sqrY);
                     //printf("suma = %d \n\n",1+index_column+index_sqrX+index_row+index_sqrY);
                 }
@@ -144,6 +130,9 @@ int main (int argc, char* argv[])
 
     assignvalue_sudoku(&SUDOKU_ORIGIN);
     print_sudoku(&SUDOKU_ORIGIN);
+
+    //template_creation();
+    //template_assigment(&SUDOKU_ORIGIN, 1);
 
     //pos_allocation(&SUDOKU_ORIGIN);
     //pos_allocation(&SUDOKU_SOLUTION);

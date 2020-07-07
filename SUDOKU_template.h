@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "game_app.h"
 
 /*
@@ -29,6 +28,5 @@
 
 */
 
-SUDOKU SUDOKU_tempate1;
-
-int template1;
+void template_assigment(SUDOKU *SUDOKU_template, int template_num);
+void template_creation();
